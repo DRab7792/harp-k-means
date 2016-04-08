@@ -69,7 +69,15 @@ public class KmeansMapper  extends CollectiveMapper<String, String, Object, Obje
 				int nearestPartitionID = -1;
 				for(ArrPartition ap: previousCenTable.getPartitions()){
 					DoubleArray aCentroid = (DoubleArray) ap.getArray();
-					/* TODO - Write code here */					
+					/* TODO - Write code here */
+					//Get the distance
+					tempDist = 	Utils.calcEucDistSquare(aPoint, aCentroid);			
+
+					//Update center and min if its closest
+					if (tempDist < minDist && tempDist != -1.0d){
+						minDist = tempDist;
+						nearestPartitionID = ap.getPartitionID();
+					}
 				}
 				err+=minDist;
 				
@@ -147,6 +155,11 @@ public class KmeansMapper  extends CollectiveMapper<String, String, Object, Obje
 		  for( ArrPartition<DoubleArray> partialCenTable: cenTable.getPartitions()){
 			  double[] doubles = partialCenTable.getArray().getArray();
 			  /* TODO - Write code here */
+			  for (int i = 0; i < (vectorSize - 1; i++) {
+			  	doubles[i] = doubles[i] / doubles[vectorSize];
+			  }
+
+
 			  doubles[vectorSize] = 0;
 		  }
 		  System.out.println("after calculate new centroids");
