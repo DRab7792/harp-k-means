@@ -71,7 +71,7 @@ public class KmeansMapper  extends CollectiveMapper<String, String, Object, Obje
 					DoubleArray aCentroid = (DoubleArray) ap.getArray();
 					/* TODO - Write code here */
 					//Get the distance
-					tempDist = 	Utils.calcEucDistSquare(aPoint, aCentroid);			
+					tempDist = 	Utils.calcEucDistSquare(aPoint, aCentroid, vectorSize);			
 
 					//Update center and min if its closest
 					if (tempDist < minDist && tempDist != -1.0d){
