@@ -75,7 +75,7 @@ public class KmeansMapper  extends CollectiveMapper<String, String, Object, Obje
 					tempDist = 	Utils.calcEucDistSquare(aPoint, aCentroid, vectorSize);			
 
 					//Update center and min if its closest
-					if (tempDist < minDist && tempDist != -1.0d){
+					if (tempDist < minDist || tempDist == -1){
 						minDist = tempDist;
 						nearestPartitionID = ap.getPartitionID();
 					}
