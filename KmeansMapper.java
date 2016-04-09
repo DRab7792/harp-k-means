@@ -156,7 +156,7 @@ public class KmeansMapper  extends CollectiveMapper<String, String, Object, Obje
 		  for( ArrPartition<DoubleArray> partialCenTable: cenTable.getPartitions()){
 			  double[] doubles = partialCenTable.getArray().getArray();
 			  /* TODO - Write code here */
-			  for (int i = 0; i < (vectorSize - 1); i++) {
+			  for (int i = 0; i < vectorSize; i++) {
 			  	doubles[i] = doubles[i] / doubles[vectorSize];
 			  }
 
